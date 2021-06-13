@@ -4,6 +4,8 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 
 import './index.scss';
+import 'normalize.css';
+
 import store from './app/store';
 import App from './App';
 
