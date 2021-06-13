@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 
+import './index.scss';
 import store from './app/store';
-
 import App from './App';
 
 ReactDOM.render(

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
 
-import styles from './login.module.css';
+import styles from './login.module.scss';
 import {useAppDispatch} from './../../app/hooks';
 
 
