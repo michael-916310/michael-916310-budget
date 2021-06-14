@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const { MONGO_CONNECTION_STRING } = require('../config');
+const {
+  mongo: { MONGO_CONNECTION_STRING },
+} = require('../config');
 const logger = require('../logging/logger');
 
 const connectToDB = () => {
