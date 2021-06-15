@@ -1,38 +1,5 @@
-const mysql = require('mysql2');
 const logger = require('../logging/logger');
-const {
-  mySQL: { HOST, USER, DATABASE, PASSWORD },
-} = require('../config');
-
-// -------------------------
-// create connection pool
-// -------------------------
-const dbPool = mysql
-  .createPool({
-    connectionLimit: 5,
-    host: HOST,
-    user: USER,
-    database: DATABASE,
-    password: PASSWORD,
-  })
-  .promise();
-
-// -------------------------
-// check db health
-// return promise with flag <dbIsAlive>
-// -------------------------
-const dbIsAlive = () => {
-  return dbPool
-    .execute('select 1')
-    .then(() => {
-      logger.info('dbIsAlive:success');
-      return Promise.resolve({ dbIsAlive: true });
-    })
-    .catch((err) => {
-      logger.error('dbIsAlive:fail ' + err);
-      return Promise.resolve({ dbIsAlive: false });
-    });
-};
+const { dbIsAlive, dbPool } = require('./connectMySqlDb');
 
 // -------------------------
 // helper for reference population
@@ -43,7 +10,7 @@ const loadOneColumnRefData = (data, tableRows, tableName) => {
       dbPool.execute(`insert into ${tableName} (name) values ("${name}")`);
       logger.info(`expenseGroups table: inserted "${name}"`);
     } else {
-      logger.info(`expenseGroups table: row exist "${name}"`);
+      //logger.info(`expenseGroups table: row exist "${name}"`);
     }
   });
 };
@@ -74,6 +41,19 @@ dbIsAlive().then((res) => {
       'Танцы', 'Проезд', 'Проезд Эльзы', 'Сотовый', 'Очки', 'Товары для дома'
     ];
 
+    const createExpenseRecords = `create table if not exists expenseRecords(
+      id int primary key auto_increment,
+      period varchar(10) not null,
+      day int not null,
+      date datetime not null,
+      expenseGroupId int not null,
+      expenseItemId int not null,
+      description varchar(500),
+      amount numeric(18,2)  not null,
+      FOREIGN KEY (expenseGroupId) REFERENCES expenseGroups (id),
+      FOREIGN KEY (expenseItemId) REFERENCES expenseItems (id)
+    )`;
+
     dbPool
       .execute(createExpenseGroup)
       .then(() => {
@@ -92,10 +72,12 @@ dbIsAlive().then((res) => {
       })
       .then(([rows]) => {
         loadOneColumnRefData(expenseItemsData, rows, 'expenseItems');
+      }).then(() => {
+        dbPool.execute(createExpenseRecords);
       });
+
+    logger.info('check tables finished');
   } else {
     logger.error(`Create and populate tables is fail. dbIsAlive:false`);
   }
 });
-
-module.exports = {};
