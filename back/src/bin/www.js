@@ -3,8 +3,8 @@ const { DEV_PORT } = require('../common/config');
 const { connectToDB } = require('../common/db/mongodb');
 const logger = require('./../common/logging/logger');
 
-require('../common/db/connectMySqlDb');
-require('../common/db/initMySqlTables');
+require('../common/db/connectDb');
+require('../common/db/initTables');
 
 const port = process.env.PORT || DEV_PORT;
 
