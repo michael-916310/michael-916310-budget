@@ -7,7 +7,7 @@ import 'normalize.css';
 import 'antd/dist/antd.css';
 import './index.scss';
 
-import store from './app/store';
+import {store} from './app/store';
 import App from './App';
 
 ReactDOM.render(

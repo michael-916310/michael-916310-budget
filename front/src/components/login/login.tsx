@@ -3,7 +3,7 @@ import { Input, Button } from 'antd';
 import { ArrowLeftOutlined, SendOutlined } from '@ant-design/icons';
 
 import styles from './login.module.scss';
-import {useAppDispatch} from './../../app/hooks';
+import { checkLogin} from './../../app/service';
 
 type btnType = {
   display?: string;
@@ -37,7 +37,7 @@ export default function Login(){
     {display:'9', value:'9', action:handleBtnPress},
     {display:'0', value:'0', action:handleBtnPress},
     {displayIcon:<ArrowLeftOutlined/>, value:'backspace', action:backspaceBtnPress},
-    {displayIcon:<SendOutlined/>, value:'send', action:()=>{}},
+    {displayIcon:<SendOutlined/>, value:'send', action:()=>{checkLogin(value)}},
   ];
 
   return (
