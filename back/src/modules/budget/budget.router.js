@@ -4,7 +4,7 @@ const service = require('./budget.service');
 const router = express.Router();
 
 router.post('/user/check', (req, res) => {
-  const code = req.query.userCode;
+  const code = req.body.userCode;
   if (code == undefined || code.length == 0) {
     res.json(
       JSON.stringify({
