@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Input, Button } from 'antd';
+import { Input, Button, Spin, Result } from 'antd';
 import { ArrowLeftOutlined, SendOutlined } from '@ant-design/icons';
 
 import styles from './login.module.scss';
 import { checkLogin } from './service';
+import { useAppSelector } from './../../app/hooks';
 
 type btnType = {
   display?: string;
@@ -40,9 +41,21 @@ export default function Login(){
     {displayIcon:<SendOutlined/>, value:'send', action:()=>{checkLogin(value)}},
   ];
 
+
+  let fetchStart = useAppSelector((state)=>{return state.auth.request.fetchStart});
+  let fetchFail = useAppSelector((state)=>{return state.auth.request.fetchFail});
+  let errorMessage = useAppSelector((state)=>{return state.auth.request.error.message});
+
   return (
     <main className={styles.main}>
       <section className={styles.container}>
+        <article className={styles.warningWrapper}>
+          {fetchFail &&
+          <Result
+            status="warning"
+            title={errorMessage}
+          />}
+        </article>
         <article className={styles.inputControlWrapper}>
           <Input
             readOnly={true}
@@ -52,11 +65,12 @@ export default function Login(){
         <article className={styles.btnContainer}>
           {
             btnArray.map((item) => (
-                <Button
+              <Button
                 key = {item.value}
                 shape='round'
                 onClick = {()=>{item.action(item)}}
                 className={styles.btn}
+                disabled = { fetchStart }
               >
                 {(item.display) ? (item.display) : (item.displayIcon)}
               </Button>
@@ -65,6 +79,7 @@ export default function Login(){
           }
         </article>
       </section>
+      {fetchStart && <Spin size="large" className={styles.spinier}/>}
     </main>
   )
 }

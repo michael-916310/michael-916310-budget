@@ -13,16 +13,6 @@ export function checkLogin( userString: string ): void {
       body: JSON.stringify({userCode: userString})
     },
     {...actions.requestStepsAC},
-    [
-      // (res)=>{
-      //   appDispatch(
-      //     authLoginTryAC({
-      //       userId:res.userId,
-      //       userName:res.userName,
-      //       isAuthenticated: res.userId > 0
-      //     })
-      //   )
-      // }
-    ]
+    []
   );
 }

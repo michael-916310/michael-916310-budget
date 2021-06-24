@@ -8,8 +8,11 @@
 }
 
 .container {
-  //background-color: azure;
   padding: 10px;
+}
+
+.warningWrapper {
+  width: 23rem;
 }
 
 .inputControlWrapper {
@@ -40,4 +43,10 @@
   height: 5rem;
 
   font-size: 2rem;
+}
+
+.spinier {
+  position: fixed;
+  left: calc(50vw - 16px);
+  top: calc(50vh - 16px);
 }
