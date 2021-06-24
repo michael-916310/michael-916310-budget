@@ -3,7 +3,7 @@ import { Input, Button } from 'antd';
 import { ArrowLeftOutlined, SendOutlined } from '@ant-design/icons';
 
 import styles from './login.module.scss';
-import { checkLogin} from './../../app/service';
+import { checkLogin } from './service';
 
 type btnType = {
   display?: string;
