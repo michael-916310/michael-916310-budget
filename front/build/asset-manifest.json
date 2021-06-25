@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.26ad66ce.chunk.css",
-    "main.js": "/static/js/main.6a62809e.chunk.js",
-    "main.js.map": "/static/js/main.6a62809e.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c0266737.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c0266737.js.map",
-    "static/css/2.3c0b4d91.chunk.css": "/static/css/2.3c0b4d91.chunk.css",
-    "static/js/2.0aca1bb3.chunk.js": "/static/js/2.0aca1bb3.chunk.js",
-    "static/js/2.0aca1bb3.chunk.js.map": "/static/js/2.0aca1bb3.chunk.js.map",
-    "static/js/3.39e4ea21.chunk.js": "/static/js/3.39e4ea21.chunk.js",
-    "static/js/3.39e4ea21.chunk.js.map": "/static/js/3.39e4ea21.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.3c0b4d91.chunk.css.map": "/static/css/2.3c0b4d91.chunk.css.map",
-    "static/css/main.26ad66ce.chunk.css.map": "/static/css/main.26ad66ce.chunk.css.map",
-    "static/js/2.0aca1bb3.chunk.js.LICENSE.txt": "/static/js/2.0aca1bb3.chunk.js.LICENSE.txt"
+    "main.css": "/michael-916310-budget/front/build/static/css/main.bcb21e6e.chunk.css",
+    "main.js": "/michael-916310-budget/front/build/static/js/main.bd3784b2.chunk.js",
+    "main.js.map": "/michael-916310-budget/front/build/static/js/main.bd3784b2.chunk.js.map",
+    "runtime-main.js": "/michael-916310-budget/front/build/static/js/runtime-main.689b244c.js",
+    "runtime-main.js.map": "/michael-916310-budget/front/build/static/js/runtime-main.689b244c.js.map",
+    "static/css/2.3c0b4d91.chunk.css": "/michael-916310-budget/front/build/static/css/2.3c0b4d91.chunk.css",
+    "static/js/2.7413fb23.chunk.js": "/michael-916310-budget/front/build/static/js/2.7413fb23.chunk.js",
+    "static/js/2.7413fb23.chunk.js.map": "/michael-916310-budget/front/build/static/js/2.7413fb23.chunk.js.map",
+    "static/js/3.ec198e40.chunk.js": "/michael-916310-budget/front/build/static/js/3.ec198e40.chunk.js",
+    "static/js/3.ec198e40.chunk.js.map": "/michael-916310-budget/front/build/static/js/3.ec198e40.chunk.js.map",
+    "index.html": "/michael-916310-budget/front/build/index.html",
+    "static/css/2.3c0b4d91.chunk.css.map": "/michael-916310-budget/front/build/static/css/2.3c0b4d91.chunk.css.map",
+    "static/css/main.bcb21e6e.chunk.css.map": "/michael-916310-budget/front/build/static/css/main.bcb21e6e.chunk.css.map",
+    "static/js/2.7413fb23.chunk.js.LICENSE.txt": "/michael-916310-budget/front/build/static/js/2.7413fb23.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c0266737.js",
+    "static/js/runtime-main.689b244c.js",
     "static/css/2.3c0b4d91.chunk.css",
-    "static/js/2.0aca1bb3.chunk.js",
-    "static/css/main.26ad66ce.chunk.css",
-    "static/js/main.6a62809e.chunk.js"
+    "static/js/2.7413fb23.chunk.js",
+    "static/css/main.bcb21e6e.chunk.css",
+    "static/js/main.bd3784b2.chunk.js"
   ]
 }

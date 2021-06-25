@@ -1,6 +1,7 @@
 {
   "name": "front",
   "version": "0.1.0",
+  "homepage": "https://michael-916310.github.io/michael-916310-budget/front/build",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
