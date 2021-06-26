@@ -72,6 +72,7 @@ export function authReducer(state: TAuthStore = initialStateAuth, action: any ):
     }
     default:
 
-      return clone;
+      //return clone;
+      return state;
   }
 }

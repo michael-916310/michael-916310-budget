@@ -1,5 +1,4 @@
 import { loadURL} from './../../app/service';
-import { appDispatch } from './../../app/hooks';
 import { actions } from './actions';
 
 export function checkLogin( userString: string ): void {

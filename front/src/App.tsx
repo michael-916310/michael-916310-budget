@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Login from './components/login/login';
-import { SiderDemo } from './components/layout/layoutDemo';
+import { Layout } from './components/layout/layout';
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      {isAuthenticated && <SiderDemo/>}
+      {isAuthenticated && <Layout/>}
       {!isAuthenticated && <Login/>}
     </>
   );
