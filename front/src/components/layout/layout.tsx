@@ -1,9 +1,11 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
+import { CalendarOutlined, CheckOutlined, EditOutlined, ExportOutlined, LogoutOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { ExpenseItemsList } from '../expenseItemsList/expenseItemsList';
 
 import styles from './layout.module.scss';
+
 
 const {  Header, Content, Footer } = Layout;
 
@@ -12,14 +14,13 @@ function AppLayout()  {
   return (
     <Layout>
       <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-          {new Array(15).fill(null).map((_, index) => {
-            const key = index + 1;
-            return <Menu.Item key={key}>{`nav ${key}`}</Menu.Item>;
-          })}
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+          <Menu.Item key="1"><PlusOutlined/></Menu.Item>
+          <Menu.Item key="2"><CalendarOutlined/></Menu.Item>
+          <Menu.Item key="3"><LogoutOutlined/></Menu.Item>
         </Menu>
       </Header>
-      <Content style={{ padding: '0 50px' }}>
+      <Content style={{ padding: '0 5px' }}>
         <div className={styles.layout_content}>
           <ExpenseItemsList/>
         </div>

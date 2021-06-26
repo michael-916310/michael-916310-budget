@@ -8,11 +8,10 @@ function ExpenseItemsList(){
 
   return (
     <>
-    Статья расходов
-    <Radio.Group defaultValue="a" buttonStyle="solid">
+    <Radio.Group defaultValue="1" buttonStyle="solid" style = {{ textAlign: 'center' }}>
       {list.map((item: any)=>{
         return (
-          <Radio.Button value={item.id}>{ item.name }</Radio.Button>
+          <Radio.Button key = { item.id } value={item.id} style = {{ margin: '1px' }} >{ item.name }</Radio.Button>
         )
       })}
     </Radio.Group>
