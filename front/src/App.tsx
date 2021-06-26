@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { loadExpenseItemsList } from './components/expenseItemsList/service';
 import Login from './components/login/login';
 import { Layout } from './components/layout/layout';
 
@@ -16,4 +17,5 @@ function App() {
   );
 }
 
+loadExpenseItemsList();
 export default App;
