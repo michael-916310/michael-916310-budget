@@ -2,8 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { CalendarOutlined, CheckOutlined, EditOutlined, ExportOutlined, LogoutOutlined, PlusOutlined } from '@ant-design/icons';
 
-import { ExpenseItemsList } from '../expenseItemsList/expenseItemsList';
-
+import { AddExpense } from './../addExpense/addExpense';
 import styles from './layout.module.scss';
 
 
@@ -22,7 +21,7 @@ function AppLayout()  {
       </Header>
       <Content style={{ padding: '0 5px' }}>
         <div className={styles.layout_content}>
-          <ExpenseItemsList/>
+          <AddExpense/>
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Бюджет расходов</Footer>
