@@ -1,14 +1,18 @@
 import React from 'react';
 import { Radio, Collapse } from 'antd';
 import { useSelector } from 'react-redux';
+import { TExpenseItem } from './../../app/common';
 
 const { Panel } = Collapse;
 
 function ExpenseItemsList(){
 
   let list = useSelector((state: any)=>(state.expenseItemsList.expenseList));
-  const list1 = list.slice(0,6);
-  const list2 = list.slice(6);
+
+  console.log('ExpenseItemsList',list);
+
+  const list1 = list.filter((item: TExpenseItem) => (item.oftenUsed > 0));
+  const list2 = list.filter((item: TExpenseItem) => (item.oftenUsed === 0));
 
   function renderList(lst:[]){
     return (

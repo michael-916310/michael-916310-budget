@@ -12,3 +12,9 @@ export interface TRequestActions {
   fetchFail: (error: {message: string})=>void,
   fetchSuccess: (fetchData: any)=>void,
 }
+
+export interface TExpenseItem {
+  id: number,
+  name: string,
+  oftenUsed: number,
+}

@@ -1,8 +1,8 @@
 import { actions } from './actions';
-import { TRequestState } from './../../app/common';
+import { TRequestState, TExpenseItem } from './../../app/common';
 
 interface TStore {
-  expenseList: {id: number, name: string}[],
+  expenseList: TExpenseItem [],
   request: TRequestState
 }
 
