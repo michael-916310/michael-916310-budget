@@ -51,6 +51,26 @@ function getExpenseItems() {
   });
 }
 
+
+function getExpenseGroups() {
+  return new Promise((resolve, reject) => {
+    dbIsAlive().then((state) => {
+      if (state.dbIsAlive) {
+        dbPool
+          .query(
+            `
+            select id, name
+            from expenseGroups`
+          )
+          .then(([row]) => {
+            resolve(row);
+          });
+      }
+    });
+  });
+}
+
+
 function addExpense(expenseDate, expenseGroupId, expenseId, expenseSum, expenseComment) {
   return new Promise((resolve, reject) => {
     const period = `${expenseDate.getFullYear()}-${expenseDate.getMonth() + 1}`;
@@ -66,7 +86,6 @@ function addExpense(expenseDate, expenseGroupId, expenseId, expenseSum, expenseC
           values
             ('${period}', ${day}, '${strDate}', ${expenseGroupId}, ${expenseId}, '${expenseComment}', ${expenseSum})
         `;
-        //console.log(sql);
         dbPool
           .query(sql)
           .then(([ResultSetHeader]) => {
@@ -79,7 +98,7 @@ function addExpense(expenseDate, expenseGroupId, expenseId, expenseSum, expenseC
             reject(err.message);
           });
       }
-    })
+    });
   });
 }
 
@@ -89,6 +108,7 @@ module.exports = {
   },
   references: {
     getExpenseItems,
+    getExpenseGroups,
   },
   expenses: {
     addExpense,

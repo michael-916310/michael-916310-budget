@@ -32,6 +32,13 @@ router.post('/references/expenseItems', (req, res) => {
   });
 });
 
+router.post('/references/expenseGroups', (req, res) => {
+  service.references.getExpenseGroups().then((data) => {
+    const d = JSON.stringify(data);
+    res.json(d);
+  });
+})
+
 router.post('/expense/add', (req, res) => {
   const expenseGroupId = +req.body.expenseGroupId;
   const expenseId = +req.body.expenseId;
