@@ -51,11 +51,46 @@ function getExpenseItems() {
   });
 }
 
+function addExpense(expenseDate, expenseGroupId, expenseId, expenseSum, expenseComment) {
+  return new Promise((resolve, reject) => {
+    const period = `${expenseDate.getFullYear()}-${expenseDate.getMonth() + 1}`;
+    const strDate = `${expenseDate.getFullYear()}/${
+      expenseDate.getMonth() + 1
+    }/${expenseDate.getDate()}`;
+    const day = expenseDate.getDate();
+    dbIsAlive().then((state) => {
+      if (state.dbIsAlive) {
+        const sql = `
+          insert into expenseRecords
+            (period,      day,     date,        expenseGroupId,    expenseItemId, description,        amount)
+          values
+            ('${period}', ${day}, '${strDate}', ${expenseGroupId}, ${expenseId}, '${expenseComment}', ${expenseSum})
+        `;
+        //console.log(sql);
+        dbPool
+          .query(sql)
+          .then(([ResultSetHeader]) => {
+            resolve({
+              status: 1,
+              message: 'OK',
+            });
+          })
+          .catch((err) => {
+            reject(err.message);
+          });
+      }
+    })
+  });
+}
+
 module.exports = {
   users: {
     getUserIdByCode,
   },
   references: {
     getExpenseItems,
+  },
+  expenses: {
+    addExpense,
   }
 };
