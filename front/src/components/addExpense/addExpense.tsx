@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import moment from 'moment';
 
 import { Button, DatePicker, Divider, Input } from 'antd';
-
-import { ExpenseItemsList } from './../expenseItemsList/expenseItemsList';
 import { CheckOutlined } from '@ant-design/icons';
 import TextArea from 'antd/lib/input/TextArea';
 
+import { ExpenseItemsList } from './../expenseItemsList/expenseItemsList';
+import { useAppSelector } from './../../app/hooks';
+import { isNumeric } from './../../app/common';
+
+
 function AddExpense(){
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
+
+  const selectedExpenseId = useAppSelector(( state ) => state.expenseItemsList.selectedExpense?.id);
+  const selectedExpenseName = useAppSelector(( state ) => state.expenseItemsList.selectedExpense?.name);
+
+  const [expenseSum, setExpenseSum] = useState('');
+  const [expenseDat, setExpenseDat] = useState(new Date());
+
+  function isOk(){
+    return (!!selectedExpenseId && isNumeric(expenseSum) && (+expenseSum !== 0) && (!!expenseDat));
+  }
+
   return (
     <>
       <ExpenseItemsList/>
@@ -16,10 +30,19 @@ function AddExpense(){
       <Divider/>
 
       <DatePicker
-        defaultValue={moment(new Date(), dateFormatList[0])}
+        defaultValue={moment(expenseDat, dateFormatList[0])}
         size = "large"
+        mode = "date"
+        inputReadOnly = {true}
         format={dateFormatList}
         style={{width:'100%', margin:'5px 0'}}
+        value = { moment(expenseDat, dateFormatList[0]) }
+        onChange = {(e) => {
+          if (e) {
+            setExpenseDat(new Date(e.year(), e.month(), e.date()));
+            }
+          }
+        }
       />
 
       <Input
@@ -28,6 +51,13 @@ function AddExpense(){
         placeholder="сумма"
         size = "large"
         style={{width:'100%', margin:'5px 0'}}
+        value = {expenseSum}
+        onChange = {(e)=> {
+          const v = e.target.value;
+          if (isNumeric(v)) {
+            setExpenseSum(v);
+          }
+        }}
       />
 
       <TextArea
@@ -43,10 +73,13 @@ function AddExpense(){
         icon={<CheckOutlined/>}
         size="large"
         style={{width:'100%', margin:'5px 0'}}
+        disabled ={!isOk()}
       >
-        Красота
-      </Button>
+        {
+          isOk() ? `${selectedExpenseName} ${expenseSum}` : ''
+        }
 
+      </Button>
     </>
   )
 }

@@ -3,11 +3,16 @@ import { TRequestState, TExpenseItem } from './../../app/common';
 
 interface TStore {
   expenseList: TExpenseItem [],
+  selectedExpense: {
+    id: number,
+    name: string,
+  } | null
   request: TRequestState
 }
 
 const initialState: TStore = {
   expenseList: [],
+  selectedExpense: null,
   request: {
     fetchStart: false,
     fetchFail: false,
@@ -54,6 +59,13 @@ export function expenseItemsListReducer(state: TStore = initialState, action: an
     case actions.const.EXPENSE_ITEMS_LIST_FETCH_SUCCESS: {
       setStep(false, false, true);
       clone.expenseList = [...action.payload.itemsArray];
+      return clone;
+    }
+    case actions.const.EXPENSE_ITEM_SELECTED: {
+      clone.selectedExpense = {
+        id: action.payload.selectedId,
+        name: clone.expenseList.filter((item)=>item.id===action.payload.selectedId)[0].name,
+      }
       return clone;
     }
     default:

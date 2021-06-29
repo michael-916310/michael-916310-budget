@@ -18,3 +18,8 @@ export interface TExpenseItem {
   name: string,
   oftenUsed: number,
 }
+
+
+export function isNumeric(n: any) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
