@@ -4,11 +4,16 @@ import { TRequestState, TExpenseGroupItem } from '../../app/commonTypes';
 
 interface TStore {
   expenseGroup: TExpenseGroupItem [],
+  selectedGroup: {
+    id: number,
+    name: string,
+  } | null
   request: TRequestState
 }
 
 const initialState: TStore = {
   expenseGroup:[],
+  selectedGroup: null,
   request: {
     fetchStart: false,
     fetchFail: false,
@@ -19,7 +24,7 @@ const initialState: TStore = {
   }
 }
 
-const expenseGroupListReducer = configureFetchReducer(
+const expenseGroupFetchReducer = configureFetchReducer(
   {
     actions,
     initialState,
@@ -29,5 +34,22 @@ const expenseGroupListReducer = configureFetchReducer(
     }
   }
 );
+
+function expenseGroupListReducer (state:TStore, action:any) {
+  switch(action.type) {
+    case actions.const.EXPENSE_GROUP_SELECTED: {
+      return {
+        ...state,
+        ...{ selectedGroup: {
+              id: action.payload.selectedId,
+              name:state.expenseGroup.filter((item)=>item.id===action.payload.selectedId)[0].name
+            }
+          }
+      }
+    }
+    default:
+      return expenseGroupFetchReducer(state, action)
+  }
+}
 
 export { expenseGroupListReducer };

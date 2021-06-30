@@ -13,6 +13,11 @@ export interface TRequestActions {
   fetchSuccess: (fetchData: any)=>void,
 }
 
+export interface TActions {
+  const: any,
+  requestStepsAC: TRequestActions,
+}
+
 export interface TExpenseItem {
   id: number,
   name: string,
@@ -22,5 +27,6 @@ export interface TExpenseItem {
 export interface TExpenseGroupItem {
   id: number,
   name: string,
-  obsolete:number
+  obsolete:number,
+  defaultSelection: number,
 }

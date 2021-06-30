@@ -1,14 +1,10 @@
 
-import {TRequestActions} from './commonTypes';
+import { TActions } from './commonTypes';
 
 export function isNumeric(n: any) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-type tActions = {
-  const: any,
-  requestStepsAC: TRequestActions,
-}
 
 export function configureFetchActions(
     baseActionName:string,
@@ -18,7 +14,7 @@ export function configureFetchActions(
   const fail: string = `${baseActionName.toUpperCase()}_FETCH_FAIL`;
   const success: string = `${baseActionName.toUpperCase()}_FETCH_SUCCESS`;
 
-  const actions: tActions = {
+  const actions: TActions = {
     const: {
       start,
       fail,
@@ -48,7 +44,7 @@ export function configureFetchReducer({
     startStateChange = (state:any)=>state,
     successStateChange = (state:any)=>state
   } : {
-    actions: tActions,
+    actions: TActions,
     initialState: any,
     startStateChange?: (state:any)=>any,
     successStateChange?: (state:any, payload: any)=>any
