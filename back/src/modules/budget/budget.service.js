@@ -59,7 +59,7 @@ function getExpenseGroups() {
         dbPool
           .query(
             `
-            select id, name, obsolete
+            select id, name, obsolete, defaultSelection
             from expenseGroups`
           )
           .then(([row]) => {
