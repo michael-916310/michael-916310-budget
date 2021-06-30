@@ -1,6 +1,6 @@
 
 import { actions, TAuthLoginPayload, TAuthLoginAction} from './actions';
-import { TRequestState } from './../../app/common';
+import { TRequestState } from '../../app/commonTypes';
 
 
 interface TAuthStore extends TAuthLoginPayload {

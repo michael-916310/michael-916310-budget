@@ -1,4 +1,4 @@
-import type { TRequestActions } from './../../app/common';
+import type { TRequestActions } from '../../app/commonTypes';
 
 const AUTH_FETCH_START = 'AUTH_FETCH_START';
 const AUTH_FETCH_FAIL = 'AUTH_FETCH_FAIL';

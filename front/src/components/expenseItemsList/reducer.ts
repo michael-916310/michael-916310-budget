@@ -1,5 +1,5 @@
 import { actions } from './actions';
-import { TRequestState, TExpenseItem } from './../../app/common';
+import { TRequestState, TExpenseItem } from '../../app/commonTypes';
 
 interface TStore {
   expenseList: TExpenseItem [],

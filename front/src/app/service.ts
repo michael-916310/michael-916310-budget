@@ -1,5 +1,5 @@
 import config from './config';
-import type { TRequestActions } from './common';
+import type { TRequestActions } from './commonTypes';
 import { appDispatch } from './hooks';
 
 export function loadURL(

@@ -5,9 +5,10 @@ import { Button, DatePicker, Divider, Input } from 'antd';
 import { CheckOutlined } from '@ant-design/icons';
 import TextArea from 'antd/lib/input/TextArea';
 
+import { ExpenseGroupList } from './../expenseGroupList/expenseGroupList';
 import { ExpenseItemsList } from './../expenseItemsList/expenseItemsList';
 import { useAppSelector } from './../../app/hooks';
-import { isNumeric } from './../../app/common';
+import { isNumeric } from '../../app/commonFN';
 
 
 function AddExpense(){
@@ -25,6 +26,8 @@ function AddExpense(){
 
   return (
     <>
+      <ExpenseGroupList/>
+
       <Divider/>
 
       <ExpenseItemsList/>

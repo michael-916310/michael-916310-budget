@@ -1,8 +1,9 @@
 import { actions } from './actions';
-import { TRequestState, configureFetchReducer } from './../../app/common';
+import { configureFetchReducer } from '../../app/commonFN';
+import { TRequestState, TExpenseGroupItem } from '../../app/commonTypes';
 
 interface TStore {
-  expenseGroup: {id: number, name: string} [],
+  expenseGroup: TExpenseGroupItem [],
   request: TRequestState
 }
 
@@ -22,7 +23,7 @@ const expenseGroupListReducer = configureFetchReducer(
   {
     actions,
     initialState,
-    successStateChange:(state:TStore, payload) => {
+    successStateChange:(state:TStore, payload: TExpenseGroupItem []) => {
       state.expenseGroup = payload;
       return state;
     }

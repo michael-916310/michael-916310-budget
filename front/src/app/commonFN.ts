@@ -1,24 +1,5 @@
-export interface TRequestState {
-  fetchStart: boolean,
-  fetchFail: boolean,
-  error: {
-    message: string
-  },
-  fetchSuccess: boolean,
-}
 
-export interface TRequestActions {
-  fetchStart: ()=>void,
-  fetchFail: (error: {message: string})=>void,
-  fetchSuccess: (fetchData: any)=>void,
-}
-
-export interface TExpenseItem {
-  id: number,
-  name: string,
-  oftenUsed: number,
-}
-
+import {TRequestActions} from './commonTypes';
 
 export function isNumeric(n: any) {
   return !isNaN(parseFloat(n)) && isFinite(n);

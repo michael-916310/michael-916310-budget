@@ -1,4 +1,4 @@
-import type { TRequestActions } from '../../app/common';
+import type { TRequestActions } from '../../app/commonTypes';
 
 const EXPENSE_ITEMS_LIST_FETCH_START = 'EXPENSE_ITEMS_LIST_FETCH_START';
 const EXPENSE_ITEMS_LIST_FETCH_FAIL = 'EXPENSE_ITEMS_LIST_FETCH_FAIL';

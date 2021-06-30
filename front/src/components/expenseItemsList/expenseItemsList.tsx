@@ -3,7 +3,7 @@ import { Radio, Collapse } from 'antd';
 import { useSelector } from 'react-redux';
 import { useAppSelector, useAppDispatch } from './../../app/hooks';
 
-import { TExpenseItem } from './../../app/common';
+import { TExpenseItem } from '../../app/commonTypes';
 import { actions } from './actions';
 
 const { Panel } = Collapse;
