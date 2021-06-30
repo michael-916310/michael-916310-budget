@@ -40,7 +40,7 @@ function getExpenseItems() {
         dbPool
           .query(
             `
-            select id, name, oftenUsed
+            select id, name, oftenUsed, obsolete
             from expenseItems`
           )
           .then(([row]) => {
@@ -59,7 +59,7 @@ function getExpenseGroups() {
         dbPool
           .query(
             `
-            select id, name
+            select id, name, obsolete
             from expenseGroups`
           )
           .then(([row]) => {
