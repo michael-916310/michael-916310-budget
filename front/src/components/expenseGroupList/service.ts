@@ -1,9 +1,9 @@
 import { loadURL} from '../../app/service';
 import { actions } from './actions';
 
-export function loadExpenseItemsList() {
+export function loadExpenseGroupList() {
   loadURL(
-    '/references/expenseItems',
+    '/references/expenseGroups',
     { method: 'POST' },
     {...actions.requestStepsAC}
   );

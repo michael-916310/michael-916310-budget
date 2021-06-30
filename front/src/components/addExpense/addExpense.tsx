@@ -25,6 +25,8 @@ function AddExpense(){
 
   return (
     <>
+      <Divider/>
+
       <ExpenseItemsList/>
 
       <Divider/>

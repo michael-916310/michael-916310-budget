@@ -11,7 +11,6 @@ export function checkLogin( userString: string ): void {
       },
       body: JSON.stringify({userCode: userString})
     },
-    {...actions.requestStepsAC},
-    []
+    {...actions.requestStepsAC}
   );
 }

@@ -5,8 +5,7 @@ import { appDispatch } from './hooks';
 export function loadURL(
     relativePath: string,
     fetchOptions:{}={},
-    requestSteps: TRequestActions,
-    callBackList: ((data: any)=>void)[] ): void {
+    requestSteps: TRequestActions): void {
 
   appDispatch(requestSteps.fetchStart());
   fetch(config.backURL + relativePath, fetchOptions)
@@ -19,9 +18,6 @@ export function loadURL(
     })
     .then((res)=>{
       appDispatch(requestSteps.fetchSuccess(JSON.parse(res)));
-      callBackList.forEach(element => {
-        element(JSON.parse(res));
-      });
     }).catch((err)=>{
       appDispatch(requestSteps.fetchFail({message: err.message}));
     })
