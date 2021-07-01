@@ -12,12 +12,14 @@ const actions: TExpActions = configureFetchActions(
 
 actions.const.EXPENSE_GROUP_SELECTED = 'EXPENSE_GROUP_SELECTED';
 actions.otherActionCreators = {
-  expenseGroupSelectedAC: (id: number) => ({
+  expenseGroupSelectedAC: (id: number) => {
+    return {
       type: actions.const.EXPENSE_GROUP_SELECTED,
       payload: {
         selectedId: id,
       }
-    })
+    }
+  }
 }
 
 export { actions };

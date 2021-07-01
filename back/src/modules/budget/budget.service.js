@@ -70,8 +70,13 @@ function getExpenseGroups() {
   });
 }
 
-
-function addExpense(expenseDate, expenseGroupId, expenseId, expenseSum, expenseComment) {
+function addExpense(
+  expenseDate,
+  expenseGroupId,
+  expenseId,
+  expenseSum,
+  expenseComment
+) {
   return new Promise((resolve, reject) => {
     const period = `${expenseDate.getFullYear()}-${expenseDate.getMonth() + 1}`;
     const strDate = `${expenseDate.getFullYear()}/${

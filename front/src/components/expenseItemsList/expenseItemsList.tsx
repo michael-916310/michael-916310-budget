@@ -33,7 +33,7 @@ function ExpenseItemsList(){
 
   return (
     <Radio.Group
-      defaultValue="1"
+      //defaultValue="1"
       buttonStyle="solid"
       style = {{ textAlign: 'center', display:'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}
       size="large"

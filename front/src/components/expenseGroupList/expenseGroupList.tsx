@@ -8,18 +8,29 @@ import { actions } from './actions';
 
 export function ExpenseGroupList(){
 
+  const dispatch = useAppDispatch();
+
   let list = useAppSelector((state)=>state.expenseGroupList.expenseGroup);
   list = list.filter((item: TExpenseGroupItem) => !item.obsolete);
   const def = list.filter((item: TExpenseGroupItem) => item.defaultSelection);
 
-  const dispatch = useAppDispatch();
+  const selectedExpenseGroup = useAppSelector(( state ) => state.expenseGroupList.selectedGroup)
+  if (!selectedExpenseGroup) {
+    // При первой загрузку прокинем в стайт дефолтное значение
+    if (Array.isArray(def) && def.length > 0) {
+      dispatch(
+        actions.otherActionCreators.expenseGroupSelectedAC(def[0].id)
+      )
+    }
+
+  }
 
   return (
     <Radio.Group
       size="large"
       optionType="button"
       buttonStyle="outline"
-      defaultValue = {(Array.isArray(def)? def[0].id:-1)}
+      defaultValue = {((Array.isArray(def) && def.length > 0)? def[0].id:-1)}
       style = {{display:'flex', flexWrap: 'wrap', justifyContent: 'center' }}
       onChange = {(e)=>{
         dispatch(
