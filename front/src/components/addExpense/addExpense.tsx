@@ -53,23 +53,14 @@ function AddExpense(){
           },
       ).then((res)=>{
         if (res.status>0) {
+          setExpenseSum('');
           setSubmitProcess({isStart: false, isFail: false, isSuccess: true, errMessage:''});
 
         } else {
-          setSubmitProcess({
-            isStart: false,
-            isFail: true,
-            isSuccess: false,
-            errMessage:res.message,
-          })
+          setSubmitProcess({isStart: false, isFail: true, isSuccess: false, errMessage:res.message})
         }
       }).catch((err)=>{
-        setSubmitProcess({
-          isStart: false,
-          isFail: true,
-          isSuccess: false,
-          errMessage:err.message,
-        })
+        setSubmitProcess({isStart: false, isFail: true, isSuccess: false, errMessage:err.message})
       })
     }
   }, [submitProcess.isStart]);
