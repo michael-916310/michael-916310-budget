@@ -54,6 +54,7 @@ function AddExpense(){
       ).then((res)=>{
         if (res.status>0) {
           setExpenseSum('');
+          setExpenseComment('');
           setSubmitProcess({isStart: false, isFail: false, isSuccess: true, errMessage:''});
 
         } else {
