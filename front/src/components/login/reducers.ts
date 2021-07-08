@@ -2,7 +2,6 @@
 import { actions, TAuthLoginPayload, TAuthLoginAction} from './actions';
 import { TRequestState } from '../../app/commonTypes';
 
-
 interface TAuthStore extends TAuthLoginPayload {
   request: TRequestState,
 }
@@ -70,9 +69,14 @@ export function authReducer(state: TAuthStore = initialStateAuth, action: any ):
 
       return clone;
     }
+    case actions.const.AUTH_LOGOUT: {
+      clone.isAuthenticated = false;
+      clone.userName = null;
+      clone.userId = null;
+      return clone;
+    }
     default:
 
-      //return clone;
       return state;
   }
 }

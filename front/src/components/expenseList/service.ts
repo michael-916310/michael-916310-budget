@@ -1,15 +1,14 @@
-import { loadURLWithSteps} from './../../app/service';
+import { loadURLWithSteps } from '../../app/service';
 import { actions } from './actions';
 
-export function checkLogin( userString: string ): void {
+export function loadExpenseList() {
   loadURLWithSteps(
-    '/user/check',
+    '/expense/getList',
     {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
-      body: JSON.stringify({userCode: userString})
     },
     {...actions.requestStepsAC}
   );

@@ -3,6 +3,7 @@ import type { TRequestActions } from '../../app/commonTypes';
 const AUTH_FETCH_START = 'AUTH_FETCH_START';
 const AUTH_FETCH_FAIL = 'AUTH_FETCH_FAIL';
 const AUTH_FETCH_SUCCESS = 'AUTH_FETCH_SUCCESS';
+const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 export interface TAuthLoginPayload {
   userId: number|null,
@@ -44,19 +45,29 @@ function authFetchSuccessAC( fetchedData: any ) {
   })
 }
 
+export function authLogoutAC(){
+  return {
+    type: AUTH_LOGOUT,
+  }
+}
 
 export const actions: {
   const: any,
   requestStepsAC: TRequestActions,
+  other: any,
 } = {
   const: {
     AUTH_FETCH_START,
     AUTH_FETCH_FAIL,
     AUTH_FETCH_SUCCESS,
+    AUTH_LOGOUT,
   },
   requestStepsAC: {
     fetchStart: authFetchStartAC,
     fetchFail: authFetchFailAC,
     fetchSuccess: authFetchSuccessAC,
+  },
+  other: {
+    authLogoutAC,
   }
 }

@@ -5,7 +5,12 @@ import { CalendarOutlined, LogoutOutlined, PlusOutlined } from '@ant-design/icon
 
 import { useAppSelector, useAppDispatch } from './../../app/hooks';
 import { AddExpense } from './../addExpense/addExpense';
+import { ExpenseList } from './../expenseList/expenseList';
+
 import { selectMenuAC } from './actions';
+import { actions } from './../login/actions';
+
+import { loadExpenseList } from './../expenseList/service';
 
 import styles from './layout.module.scss';
 
@@ -25,8 +30,15 @@ function AppLayout()  {
           theme="dark" mode="horizontal"
           selectedKeys={[selectedItem]}
           onSelect = {function({ item, key, keyPath, selectedKeys, domEvent }){
-            console.log(key);
-            dispatch(selectMenuAC(key));
+            if (key==='1' || key==='2') {
+              dispatch(selectMenuAC(key));
+            } if (key === '3') {
+              dispatch(actions.other.authLogoutAC());
+            }
+            if (key==='2') {
+              // loading expense list
+              loadExpenseList();
+            }
           }}
         >
           <Menu.Item key="1"><PlusOutlined/></Menu.Item>
@@ -37,7 +49,7 @@ function AppLayout()  {
       <Content style={{ padding: '0 5px' }}>
         <div className={styles.layout_content}>
           {selectedItem==='1' && <AddExpense/>}
-
+          {selectedItem==='2' && <ExpenseList/>}
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Бюджет расходов</Footer>

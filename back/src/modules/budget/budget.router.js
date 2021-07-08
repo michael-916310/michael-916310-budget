@@ -96,4 +96,11 @@ router.post('/expense/add', (req, res) => {
   //console.log(expenseId, expenseGroupId, expenseSum, expenseDate, expenseComment);
 });
 
+router.post('/expense/getList', (req, res) => {
+  (async function () {
+    const list = await service.expenses.getExpenseList();
+    res.json(JSON.stringify(list));
+  })();
+});
+
 module.exports = router;

@@ -7,6 +7,15 @@ export interface TRequestState {
   fetchSuccess: boolean,
 }
 
+export const requestStateInitial:TRequestState = {
+  fetchStart: false,
+  fetchFail: false,
+  error: {
+    message: '',
+  },
+  fetchSuccess: false,
+}
+
 export interface TRequestActions {
   fetchStart: ()=>void,
   fetchFail: (error: {message: string})=>void,

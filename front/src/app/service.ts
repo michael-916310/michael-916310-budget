@@ -13,7 +13,7 @@ export function fetchURL(relativePath: string, fetchOptions:{}={}){
     })
 }
 
-export function loadURL(
+export function loadURLWithSteps(
     relativePath: string,
     fetchOptions:{}={},
     requestSteps: TRequestActions): void {

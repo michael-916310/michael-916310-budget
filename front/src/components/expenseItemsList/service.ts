@@ -1,8 +1,8 @@
-import { loadURL} from '../../app/service';
+import { loadURLWithSteps} from '../../app/service';
 import { actions } from './actions';
 
 export function loadExpenseItemsList() {
-  loadURL(
+  loadURLWithSteps(
     '/references/expenseItems',
     { method: 'POST' },
     {...actions.requestStepsAC}
