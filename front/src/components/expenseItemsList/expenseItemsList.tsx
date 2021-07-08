@@ -1,6 +1,5 @@
 import React from 'react';
 import { Radio, Collapse } from 'antd';
-import { useSelector } from 'react-redux';
 import { useAppSelector, useAppDispatch } from './../../app/hooks';
 
 import { TExpenseItem } from '../../app/commonTypes';

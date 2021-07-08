@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Button, Descriptions, Popconfirm } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 
 import { useAppSelector } from './../../app/hooks';
-
 import { IExpenseListItem } from './reducer';
+import { loadExpenseList } from './service';
 
 import styles from './expenseList.module.scss';
 
@@ -15,11 +15,16 @@ export function ExpenseList(){
 
   const list:IExpenseListItem[] = useAppSelector(state=>state.expenseList.expenseList);
 
+
+  useEffect(()=>{
+    loadExpenseList();
+  },[])
+
   return (
     <>
         {list.map((item:IExpenseListItem) => {
             return (
-              <p className={styles.itemContainer}>
+              <section className={styles.itemContainer} key={item.id}>
                 <Descriptions
                   bordered
                   column={{ xl: 4, sm: 2, xs: 1 }}
@@ -27,12 +32,22 @@ export function ExpenseList(){
                   className={styles.description}
                   extra = {
                     <Popconfirm
-                      title="Title"
+                      title={`Удалить <${item.expenseName}> на <${item.amount}> рублей за ${item.day} число?`}
                       visible ={item.id===deleteConfirmIndex}
+                      cancelText = "Отменить"
+                      cancelButtonProps = {{size:"large"}}
+                      okText = "Да, удалить"
+                      okButtonProps ={{size:"large"}}
+                      onCancel = {()=>{setDeleteConfirmIndex(-1)}}
+                      onConfirm = {()=>{
+                        setDeleteConfirmIndex(-1);
+                      }}
                     >
                       <Button
                         type="primary"
+                        size ="large"
                         onClick={()=>{setDeleteConfirmIndex(item.id)} }
+                        className = {styles.buttonDelete}
                       >
                         <DeleteOutlined />
                       </Button>
@@ -45,7 +60,7 @@ export function ExpenseList(){
                   <Descriptions.Item label="Дата">{item.period}-{item.day}</Descriptions.Item>
                   <Descriptions.Item label="Описание" span={2}>{item.description}</Descriptions.Item>
                 </Descriptions>
-              </p>
+              </section>
             )
         })}
     </>

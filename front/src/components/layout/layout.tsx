@@ -10,8 +10,6 @@ import { ExpenseList } from './../expenseList/expenseList';
 import { selectMenuAC } from './actions';
 import { actions } from './../login/actions';
 
-import { loadExpenseList } from './../expenseList/service';
-
 import styles from './layout.module.scss';
 
 
@@ -34,10 +32,6 @@ function AppLayout()  {
               dispatch(selectMenuAC(key));
             } if (key === '3') {
               dispatch(actions.other.authLogoutAC());
-            }
-            if (key==='2') {
-              // loading expense list
-              loadExpenseList();
             }
           }}
         >
