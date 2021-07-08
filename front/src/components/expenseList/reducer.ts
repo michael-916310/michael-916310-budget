@@ -1,4 +1,4 @@
-import { actions } from './actions';
+import { actions, actionsDelete } from './actions';
 import { configureFetchReducer } from './../../app/commonFN';
 import { TRequestState, requestStateInitial } from './../../app/commonTypes';
 
@@ -33,6 +33,33 @@ export const expenseListFetchReducer = configureFetchReducer(
     initialState,
     successStateChange: (state: TStore, payload:[]) => {
       state.expenseList = payload;
+      return state;
+    }
+  }
+);
+
+// =======================================
+
+interface TStoreDelete {
+  status: number,
+  request: TRequestState,
+}
+
+const initialStateDelete: TStoreDelete = {
+  status: 0,
+  request:{
+    ...requestStateInitial,
+    error: {
+      ...requestStateInitial.error,
+    }
+  }
+}
+export const expenseListDeleteFetchReducer = configureFetchReducer(
+  {
+    actions:actionsDelete,
+    initialState: initialStateDelete,
+    successStateChange: (state: TStoreDelete, payload:any) => {
+      state.status = payload.status;
       return state;
     }
   }

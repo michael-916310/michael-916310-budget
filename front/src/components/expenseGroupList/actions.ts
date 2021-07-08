@@ -1,11 +1,7 @@
 import { configureFetchActions } from '../../app/commonFN';
-import { TActions } from '../../app/commonTypes';
+import { TOtherActions } from '../../app/commonTypes';
 
-interface TExpActions extends TActions {
-  otherActionCreators?: any
-}
-
-const actions: TExpActions = configureFetchActions(
+const actions: TOtherActions = configureFetchActions(
   'EXPENSE_GROUPS_LIST',
   (fetchedData:any)=>fetchedData
 );

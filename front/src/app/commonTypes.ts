@@ -39,3 +39,7 @@ export interface TExpenseGroupItem {
   obsolete:number,
   defaultSelection: number,
 }
+
+export interface TOtherActions extends TActions {
+  otherActionCreators?: any
+}

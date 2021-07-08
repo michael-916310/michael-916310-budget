@@ -132,6 +132,25 @@ function getExpenseList(){
   })
 }
 
+function deleteExpense(id){
+  return new Promise((resolve, reject) => {
+    dbIsAlive().then((state) => {
+      if (state.dbIsAlive) {
+        dbPool
+          .query(
+            `
+          delete from expenseRecords where id = ${id}
+          `
+          )
+          .then(([ResultSetHeader]) => {
+            console.log(ResultSetHeader);
+            resolve(ResultSetHeader.affectedRows);
+          });
+      }
+    })
+  })
+}
+
 module.exports = {
   users: {
     getUserIdByCode,
@@ -143,5 +162,6 @@ module.exports = {
   expenses: {
     addExpense,
     getExpenseList,
+    deleteExpense
   }
 };
