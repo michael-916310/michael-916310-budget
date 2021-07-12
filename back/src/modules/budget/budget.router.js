@@ -107,25 +107,31 @@ router.delete('/expense/delete', (req, res) => {
   const recordId = +req.body.recordId;
 
   if (!(recordId > 0)) {
-    res.json({
-      status: -1,
-      message: 'Не указана запись',
-    })
+    res.json(
+      JSON.stringify({
+        status: -1,
+        message: 'Не указана запись',
+      })
+    );
   } else {
     service.expenses.deleteExpense(recordId).then((colRows) => {
       if (colRows === 1) {
-        res.json({
-          status: 1,
-          message: 'OK',
-        });
+        res.json(
+          JSON.stringify({
+            status: 1,
+            message: 'OK',
+          })
+        );
       } else if (colRows === 0) {
-        res.json({
-          status: -1,
-          message: `Запись с id:${recordId} не удалена`,
-        })
+        res.json(
+          JSON.stringify({
+            status: -1,
+            message: `Запись с id:${recordId} не удалена`,
+          })
+        );
       }
-    })
+    });
   }
-})
+});
 
 module.exports = router;

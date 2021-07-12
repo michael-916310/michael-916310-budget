@@ -4,7 +4,7 @@ import { authReducer } from './../components/login/reducers';
 import { expenseItemsListReducer } from './../components/expenseItemsList/reducer';
 import { expenseGroupListReducer } from './../components/expenseGroupList/reducer';
 import { menuReducer } from './../components/layout/reducer';
-import { expenseListFetchReducer } from './../components/expenseList/reducer';
+import { expenseListFetchReducer, expenseListDeleteFetchReducer } from './../components/expenseList/reducer';
 
 export const reducer = combineReducers({
   auth: authReducer,
@@ -12,4 +12,5 @@ export const reducer = combineReducers({
   expenseGroupList: expenseGroupListReducer,
   menu: menuReducer,
   expenseList: expenseListFetchReducer,
+  expenseListItemDelete: expenseListDeleteFetchReducer,
 })

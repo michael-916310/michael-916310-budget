@@ -71,7 +71,7 @@ export function configureFetchReducer({
           })
         }
         case actions.const.fail: {
-          console.log('reducer', actions.const.fail);
+          //console.log('reducer', actions.const.fail, action);
           return {
             ...state,
             ...{

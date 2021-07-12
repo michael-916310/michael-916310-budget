@@ -1,5 +1,5 @@
 import { loadURLWithSteps } from '../../app/service';
-import { actions } from './actions';
+import { actions, actionsDelete } from './actions';
 
 export function loadExpenseList() {
   loadURLWithSteps(
@@ -12,4 +12,20 @@ export function loadExpenseList() {
     },
     {...actions.requestStepsAC}
   );
+}
+
+export function deleteExpenseItem(id: number) {
+  loadURLWithSteps(
+    '/expense/delete',
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        recordId: id
+      })
+    },
+    { ...actionsDelete.requestStepsAC }
+  )
 }

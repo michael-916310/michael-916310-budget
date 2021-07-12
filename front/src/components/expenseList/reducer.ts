@@ -41,12 +41,10 @@ export const expenseListFetchReducer = configureFetchReducer(
 // =======================================
 
 interface TStoreDelete {
-  status: number,
   request: TRequestState,
 }
 
 const initialStateDelete: TStoreDelete = {
-  status: 0,
   request:{
     ...requestStateInitial,
     error: {
@@ -59,7 +57,12 @@ export const expenseListDeleteFetchReducer = configureFetchReducer(
     actions:actionsDelete,
     initialState: initialStateDelete,
     successStateChange: (state: TStoreDelete, payload:any) => {
-      state.status = payload.status;
+      console.log(payload);
+      if (payload.status === -1) {
+        state.request.error.message = payload.message;
+        state.request.fetchFail = true;
+        state.request.fetchSuccess = false;
+      }
       return state;
     }
   }
